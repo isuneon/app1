@@ -1,0 +1,54 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>APP 1</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content padding>
+	<h3 class="title-form">Nuevo registro</h3>
+    <form [formGroup]="forma" (ngSubmit)="validateDataDevice()" novalidate>  
+        <ion-item>
+            <ion-label floating>Nombre del dispositivo</ion-label>
+            <ion-input type="text" formControlName="nombre"></ion-input>
+        </ion-item>
+        <div class="msg-error" *ngIf="forma.controls['nombre'].errors?.required && forma.controls['nombre'].touched">
+            El campo es obligatorio
+        </div>
+        <div class="msg-error" *ngIf="forma.controls['nombre'].errors?.minlength && forma.controls['nombre'].touched">
+            Mínimo 3 caracteres
+        </div>
+        <div class="msg-error" *ngIf="forma.controls['nombre'].errors?.pattern && forma.controls['nombre'].touched">
+            Formato incorrecto. Solo letras
+        </div>
+        <ion-item>
+            <ion-label floating>Número del dispositivo</ion-label>
+            <ion-input type="number" formControlName="numero"></ion-input>
+        </ion-item>
+        <div class="msg-error" *ngIf="forma.controls['numero'].errors?.required && forma.controls['numero'].touched">
+            El campo es obligatorio
+        </div>
+        <div class="msg-error" *ngIf="forma.controls['numero'].errors?.minlength && forma.controls['numero'].touched">
+            Mínimo 11 caracteres
+        </div>
+        <ion-item>
+            <ion-label floating>IMEI del dispositivo</ion-label>
+            <ion-input type="number" formControlName="IMEI"></ion-input>
+        </ion-item>
+        <div class="msg-error" *ngIf="forma.controls['IMEI'].errors?.required && forma.controls['IMEI'].touched">
+            El campo es obligatorio
+        </div>
+        <div class="msg-error" *ngIf="forma.controls['IMEI'].errors?.minlength && forma.controls['IMEI'].touched">
+            Mínimo 15 caracteres
+        </div>
+        <div class="btn-form" padding-top>
+            <button padding icon-start icon-only class="color-primary" ion-button block type="submit" [disabled]="!forma.valid">
+            	<ion-icon name='archive'></ion-icon>
+            	Guardar
+            </button>
+        </div>
+    </form>
+</ion-content>
+<ion-footer>
+    <ion-toolbar text-center text-uppercase>
+        <p>{{anio}} © Isuneon S.A.</p>
+    </ion-toolbar>
+</ion-footer>

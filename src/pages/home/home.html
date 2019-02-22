@@ -1,18 +1,34 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>APP 1</ion-title>
+    </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+    <ion-searchbar (ionInput)="filter($event)" placeholder="Buscar dispositivo"></ion-searchbar>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div *ngIf=" arr.length > 0">
+        <ion-card *ngFor="let item of arr">
+            <ion-item-group>
+                <ion-item-divider color="light">Dispositivo: {{ item['Nombre'] }}</ion-item-divider>
+                <ion-item>IMEI: {{ item['IMEI'] }}</ion-item>
+                <ion-item>Número: {{ item['Numero'] }}</ion-item>
+            </ion-item-group>
+            <button class="color-primary" float-right ion-button style="margin: 0 10px 10px 0;" (click) = "verUbicacion(item)">Ver ubicación</button>
+        </ion-card>
+    </div>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+    <div padding *ngIf="devices == false">
+        <h5 text-center style="padding: 60px 0px 15px 0px;">No hay dispositivos registrados hasta el momento</h5>
+        <button class="color-primary" ion-button block (click) = "nuevoRegistro()">Registrar dispositivo nuevo</button>
+    </div>
 </ion-content>
+<ion-footer>
+    <ion-toolbar text-center text-uppercase>
+        <p>{{anio}} © Isuneon S.A.</p>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,23 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>App 1</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content padding style="margin-top: 150px; text-align: center;">
+	<h3 class="title-form">Inicio de sesión</h3>
+    <div class="btn-form center" padding-top>
+        <button padding ion-button icon-start icon-only (click) = "inicioSesionFacebook()">
+        	<ion-icon name='logo-facebook'></ion-icon>
+        	Login with Facebook
+      	</button>
+      	<button padding ion-button icon-start icon-only (click) = "inicioSesionGoogle()">
+        	<ion-icon name='logo-googleplus'></ion-icon>
+        	Login with Google+
+      	</button>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar text-center text-uppercase>
+        <p>{{anio}} © Isuneon S.A.</p>
+    </ion-toolbar>
+</ion-footer>
